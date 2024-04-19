@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Convidados</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    
+    <h1>Lista de Convidados</h1>
+    <!--Formulario pra adição de convidados na lista-->
+    <form th:action="@{/adicionar}" method="post">
+        <input type="text" name="nome" placeholder="Nome">
+        <input type="text" name="qtdConvidado" placeholder="Quantidade de acompanhantes">
+        <button type="submit">Adicionar Convidado</button>
+    </form> 
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Quantidade de acompanhantes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="convidado : ${convidados}">
+                <td th:text="${convidado.nome}"></td>
+                <td th:text="${convidado.qtdConvidado}"></td>
+            </tr>
+        </tbody>
+    </table>
+    
+    
+</body>
+</html>
